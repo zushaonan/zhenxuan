@@ -14,9 +14,19 @@ export default defineConfig({
     symbolId: 'icon-[dir]-[name]',
   }),
   ],
+  // 全局路径设置为@
   resolve: {
     alias: {
       "@": path.resolve("./src") // 相对路径别名配置，使用 @ 代替 src
     }
-  }
+  },
+  // 设置scss全局变量文件
+  css: {
+    preprocessorOptions: {
+      scss: {
+        javascriptEnabled: true,
+        additionalData: '@import "./src/styles/variable.scss";',
+      },
+    },
+  },
 })
